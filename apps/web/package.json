@@ -1,0 +1,32 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "12.3",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "styled-components": "^5.3.10",
+    "swr": "^2.1.5",
+    "ui": "workspace:*",
+    "web3": "1.9.0",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.12",
+    "@types/react": "16.14.0",
+    "@types/react-dom": "16.9.8",
+    "@types/styled-components": "^5.1.26",
+    "babel-plugin-styled-components": "^2.1.1",
+    "eslint-config-custom": "workspace:*",
+    "next-transpile-modules": "^10.0.0",
+    "tsconfig": "workspace:*",
+    "typescript": "^4.5.3"
+  }
+}
