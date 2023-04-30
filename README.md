@@ -23,10 +23,11 @@ Go to the root of the project and install dependencies
 pnpm install
 ```
 
-Go to server and generate schema
+Go to the server, generate schema, and create env file from `.env.example`
 
 ```sh
 cd apps/server
+cp .env.example .env
 npx prisma generate
 cd ../..
 ```
@@ -45,7 +46,7 @@ turbo run dev
 
 ## Usage
 
-The web app is available at `http://localhost:3000` and the backend is available at `http://localhost:4000`.
+The web app is available at `http://localhost:3000` and the server is available at `http://localhost:4000`.
 
 ### API
 
