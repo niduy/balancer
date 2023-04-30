@@ -29,13 +29,33 @@ Go to the server, generate schema, and create env file from `.env.example`
 cd apps/server
 cp .env.example .env
 npx prisma generate
-cd ../..
 ```
 
-Start redis and mongodb containers
+Inside the server folder, generate mongodb-keyfile
 
 ```sh
+openssl rand -base64 756 > configs/mongodb-keyfile
+chmod 400 configs/mongodb-keyfile
+```
+
+Got back to the root folder and start redis and mongodb containers
+
+```sh
+cd ../..
 docker-compose -f docker-compose.yaml up -d
+```
+
+Get inside mongodb container
+
+```sh
+docker container exec -it balancer_mongo mongosh -u root -p password --authenticationDatabase admin
+```
+
+Initialize primary replica set
+
+```mongosh
+rs.initiate()
+exit
 ```
 
 Start the project
