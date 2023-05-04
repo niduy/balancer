@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { PrismaService } from './prisma.service';
 import { CoingeckoService } from './coingecko.service';
 import { BalanceService } from './balance.service';
+import { MarketService } from './market.service';
 
 @Module({
   imports: [
@@ -18,6 +19,12 @@ import { BalanceService } from './balance.service';
     ScheduleModule.forRoot(),
   ],
   controllers: [AppController],
-  providers: [AppService, PrismaService, CoingeckoService, BalanceService],
+  providers: [
+    AppService,
+    PrismaService,
+    CoingeckoService,
+    BalanceService,
+    MarketService,
+  ],
 })
 export class AppModule {}

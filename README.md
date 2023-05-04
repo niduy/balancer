@@ -8,7 +8,7 @@ A dead simple web3 app to get the balance of your ethereum wallet for multiple a
 
 Users on Linux and Mac need to install the following tools to run the project:
 
-- Node.js (16.x)
+- Node.js (18.x)
 - Docker
 - Docker Compose
 - pnpm
@@ -35,7 +35,7 @@ Inside the server folder, generate mongodb-keyfile
 
 ```sh
 openssl rand -base64 756 > configs/mongodb-keyfile
-chmod 400 configs/mongodb-keyfile
+sudo chmod 400 configs/mongodb-keyfile
 ```
 
 Got back to the root folder and start redis and mongodb containers
@@ -45,13 +45,13 @@ cd ../..
 docker-compose -f docker-compose.yaml up -d
 ```
 
-Get inside mongodb container
+Get inside the primary mongodb container
 
 ```sh
-docker container exec -it balancer_mongo mongosh -u root -p password --authenticationDatabase admin
+docker container exec -it balancer_mongo_1 mongosh -u root -p password --authenticationDatabase admin
 ```
 
-Initialize primary replica set
+Initialize the primary replica set
 
 ```mongosh
 rs.initiate()

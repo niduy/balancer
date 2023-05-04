@@ -1,11 +1,9 @@
+import { isEthereumAvailable } from "./isEithereumAvailable";
+
 const Web3 = require("web3");
 
-const isEthereum = (window: Window): window is Window & typeof window => {
-  return "ethereum" in window;
-};
-
 export const connectWallet = async () => {
-  if (!isEthereum(window)) {
+  if (!isEthereumAvailable(window)) {
     console.warn(
       "MetaMask not found. Please install it from https://metamask.io/"
     );

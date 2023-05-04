@@ -11,6 +11,7 @@ export const lightTheme = {
   border1: "#9e9e9e",
   tableHeader: "#f7f7f7",
   tableBorder: "#F2F2F2",
+  error: "red",
 };
 
 export const darkTheme = {
@@ -25,4 +26,5 @@ export const darkTheme = {
   border1: "#fff",
   tableHeader: "#444",
   tableBorder: "#222",
+  error: "red",
 };

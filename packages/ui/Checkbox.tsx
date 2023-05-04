@@ -29,7 +29,6 @@ const StyledCheckbox = styled.span.attrs(() => ({
   border: 1px solid ${({ theme }) => theme.border1};
   border-radius: 4px;
   font-size: 10px;
-  text-decoration: underscore;
   background-color: ${({ checked, theme }) =>
     checked ? theme.primary : theme.primaryReversed};
   color: ${({ checked, theme }) =>

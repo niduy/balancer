@@ -19,7 +19,6 @@ const Copyright = styled.span`
 const PrivacyPolicyLink = styled(Link)`
   line-height: 120%;
   letter-spacing: 0.02em;
-  text-decoration-line: underline;
   opacity: 0.5;
 `;
 

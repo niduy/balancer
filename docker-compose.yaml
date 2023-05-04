@@ -1,19 +1,75 @@
 version: "3.8"
 
 services:
-  mongo:
+  mongo1:
     image: mongo
-    container_name: balancer_mongo
-    command: mongod --config /etc/mongo/mongodb.conf
+    container_name: balancer_mongo_1
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password
-    volumes:
-      - mongodb_data:/data/db
-      - ./apps/server/configs/mongodb.conf:/etc/mongo/mongodb.conf
-      - ./apps/server/configs/mongodb-keyfile:/etc/mongodb-keyfile
     ports:
       - "27017:27017"
+    volumes:
+      - mongodb_data1:/data/db
+      - ./apps/server/configs/mongodb.conf:/etc/mongo/mongodb.conf
+      - ./apps/server/configs/mongodb-keyfile:/etc/mongodb-keyfile
+    command:
+      [
+        "mongod",
+        "--config",
+        "/etc/mongo/mongodb.conf",
+        "--replSet",
+        "rs0",
+        "--bind_ip_all",
+      ]
+
+  mongo2:
+    image: mongo
+    container_name: balancer_mongo_2
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "27018:27018"
+    volumes:
+      - mongodb_data2:/data/db
+      - ./apps/server/configs/mongodb.conf:/etc/mongo/mongodb.conf
+      - ./apps/server/configs/mongodb-keyfile:/etc/mongodb-keyfile
+    command:
+      [
+        "mongod",
+        "--config",
+        "/etc/mongo/mongodb.conf",
+        "--replSet",
+        "rs0",
+        "--bind_ip_all",
+        "--port",
+        "27018",
+      ]
+
+  mongo3:
+    image: mongo
+    container_name: balancer_mongo_3
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "27019:27019"
+    volumes:
+      - mongodb_data3:/data/db
+      - ./apps/server/configs/mongodb.conf:/etc/mongo/mongodb.conf
+      - ./apps/server/configs/mongodb-keyfile:/etc/mongodb-keyfile
+    command:
+      [
+        "mongod",
+        "--config",
+        "/etc/mongo/mongodb.conf",
+        "--replSet",
+        "rs0",
+        "--bind_ip_all",
+        "--port",
+        "27019",
+      ]
 
   redis:
     image: redis:7
@@ -23,4 +79,6 @@ services:
       - "6379:6379"
 
 volumes:
-  mongodb_data:
+  mongodb_data1:
+  mongodb_data2:
+  mongodb_data3:

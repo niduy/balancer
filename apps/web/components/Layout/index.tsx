@@ -1,5 +1,7 @@
 import { PropsWithChildren } from "react";
 import styled from "styled-components";
+import { useMetamaskContext } from "../../contexts/MetamaskContext";
+import Toast from "../Toast";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 
@@ -18,11 +20,14 @@ const Page = styled.div`
 type LayoutProps = PropsWithChildren<{}>;
 
 export const Layout = ({ children }: LayoutProps) => {
+  const { isBnbTestnet } = useMetamaskContext();
+
   return (
     <Page>
       <Header />
       {children}
       <Footer />
+      <Toast message="Only BNB Testnet is supported" isVisible={isBnbTestnet} />
     </Page>
   );
 };

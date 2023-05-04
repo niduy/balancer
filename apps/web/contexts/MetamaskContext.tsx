@@ -8,10 +8,10 @@ export const MetamaskContext = createContext<ReturnType<
 export const useMetamaskContext = () => useContext(MetamaskContext);
 
 export const MetamaskProvider = ({ children }: PropsWithChildren<{}>) => {
-  const { address, login } = useMetamask();
+  const state = useMetamask();
 
   return (
-    <MetamaskContext.Provider value={{ address, login }}>
+    <MetamaskContext.Provider value={state}>
       {children}
     </MetamaskContext.Provider>
   );

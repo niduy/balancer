@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "ui";
-import { MetamaskContext } from "../contexts/MetamaskContext";
+import { MetamaskContext } from "../../contexts/MetamaskContext";
 
 const UIHeader = styled.header`
   display: flex;

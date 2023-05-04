@@ -37,8 +37,6 @@ const CoinSchema = z.object({
   last_updated: z.string(),
 });
 
-// TODO: convert to an injectable class
-
 @Injectable()
 export class CoingeckoService {
   async getCoinList() {
